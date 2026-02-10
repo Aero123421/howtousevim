@@ -1,0 +1,1343 @@
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Colors - Vim Green Theme */
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --bg-card: #1c2128;
+    
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    
+    --vim-green: #00ff00;
+    --vim-dark-green: #00cc00;
+    --accent-primary: #00ff00;
+    --accent-secondary: #56d364;
+    --accent-success: #3fb950;
+    --accent-warning: #d29922;
+    --accent-danger: #f85149;
+    
+    --border-color: #30363d;
+    
+    /* Terminal Colors */
+    --term-bg: #1e1e1e;
+    --term-green: #4ec9b0;
+    --term-yellow: #dcdcaa;
+    --term-blue: #569cd6;
+    --term-red: #f44747;
+    --term-purple: #c586c0;
+    --term-orange: #ce9178;
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Typography */
+    --font-mono: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+/* ===== Navigation ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.logo-icon {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--vim-green);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--space-xl);
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--vim-green);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--vim-green);
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 2px;
+    background: var(--text-primary);
+    transition: var(--transition-fast);
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: var(--space-3xl) var(--space-lg);
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.05), transparent);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(86, 211, 100, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+    line-height: 1.2;
+}
+
+.hero-title .highlight {
+    color: var(--vim-green);
+    text-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2xl);
+    line-height: 1.8;
+}
+
+.hero-subtitle strong {
+    color: var(--vim-green);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.btn-primary {
+    background: var(--vim-green);
+    color: var(--bg-primary);
+}
+
+.btn-primary:hover {
+    background: var(--accent-success);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--vim-green);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 255, 0, 0.1);
+    box-shadow: var(--shadow-glow);
+}
+
+.arrow {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-fast);
+}
+
+.btn-primary:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* ===== Section Headers ===== */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    background: var(--bg-tertiary);
+    color: var(--vim-green);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-md);
+}
+
+.section-header h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin-bottom: var(--space-md);
+}
+
+.section-header p {
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ===== What is Vim ===== */
+.what-is-vim {
+    padding: var(--space-3xl) 0;
+    background: var(--bg-secondary);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+}
+
+.feature-card {
+    background: var(--bg-card);
+    padding: var(--space-xl);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--vim-green);
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-lg);
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+}
+
+/* ===== Concepts Section ===== */
+.concepts-section {
+    padding: var(--space-3xl) 0;
+}
+
+.modes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+}
+
+.mode-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.mode-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.normal-mode {
+    border-color: var(--vim-green);
+}
+
+.normal-mode:hover {
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.15);
+}
+
+.insert-mode {
+    border-color: var(--accent-success);
+}
+
+.insert-mode:hover {
+    box-shadow: 0 10px 30px rgba(63, 185, 80, 0.15);
+}
+
+.visual-mode {
+    border-color: var(--accent-warning);
+}
+
+.visual-mode:hover {
+    box-shadow: 0 10px 30px rgba(210, 153, 34, 0.15);
+}
+
+.mode-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mode-header h3 {
+    flex: 1;
+    font-size: 1.1rem;
+}
+
+.mode-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.normal-mode .mode-badge {
+    background: var(--vim-green);
+    color: var(--bg-primary);
+}
+
+.insert-mode .mode-badge {
+    background: var(--accent-success);
+    color: var(--bg-primary);
+}
+
+.visual-mode .mode-badge {
+    background: var(--accent-warning);
+    color: var(--bg-primary);
+}
+
+.mode-status {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    background: var(--bg-primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.mode-content {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.mode-desc {
+    color: var(--text-secondary);
+}
+
+.mode-desc strong {
+    color: var(--text-primary);
+}
+
+.mode-example {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.example-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.example-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.example-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+}
+
+.example-item kbd {
+    background: var(--bg-tertiary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--vim-green);
+}
+
+.typing-demo {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    min-height: 20px;
+}
+
+.cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+    color: var(--vim-green);
+}
+
+.selection-demo {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+.selected {
+    background: rgba(210, 153, 34, 0.3);
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+.mode-key {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+}
+
+.key-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.mode-key .keys {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.mode-key kbd {
+    background: var(--bg-primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    border: 1px solid var(--border-color);
+    color: var(--vim-green);
+}
+
+.mode-key.return kbd {
+    color: var(--accent-success);
+}
+
+/* Mode Flow Section */
+.mode-flow-section {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: var(--space-xl);
+}
+
+.flow-title {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    font-size: 1.25rem;
+}
+
+.mode-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-lg);
+}
+
+.flow-item {
+    text-align: center;
+}
+
+.flow-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.flow-icon.normal {
+    background: var(--vim-green);
+    color: var(--bg-primary);
+}
+
+.flow-icon.insert {
+    background: var(--accent-success);
+    color: var(--bg-primary);
+}
+
+.flow-icon.visual {
+    background: var(--accent-warning);
+    color: var(--bg-primary);
+}
+
+.flow-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.flow-arrow {
+    font-size: 1.5rem;
+    color: var(--vim-green);
+}
+
+.flow-tip {
+    text-align: center;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid var(--vim-green);
+    border-radius: 8px;
+    padding: var(--space-md);
+    color: var(--text-secondary);
+}
+
+.flow-tip strong {
+    color: var(--vim-green);
+}
+
+.flow-tip kbd {
+    background: var(--bg-primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    color: var(--vim-green);
+}
+
+/* ===== Movement Demo Section ===== */
+.movement-demo-section {
+    padding: var(--space-3xl) 0;
+    background: var(--bg-secondary);
+}
+
+.demo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .demo-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.keyboard-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.instruction {
+    background: var(--bg-card);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border-left: 4px solid var(--vim-green);
+}
+
+.instruction p {
+    color: var(--text-secondary);
+}
+
+.instruction kbd {
+    background: var(--bg-tertiary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--vim-green);
+}
+
+.vim-keyboard {
+    background: var(--bg-card);
+    padding: var(--space-xl);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.keyboard-row {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-bottom: var(--space-md);
+}
+
+.keyboard-row.advanced {
+    flex-wrap: wrap;
+}
+
+.key {
+    min-width: 60px;
+    height: 60px;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    user-select: none;
+}
+
+.key:hover {
+    border-color: var(--vim-green);
+    transform: translateY(-2px);
+}
+
+.key.active {
+    background: var(--vim-green);
+    border-color: var(--vim-green);
+    color: var(--bg-primary);
+    transform: translateY(2px);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+.key.small {
+    min-width: 80px;
+    height: 50px;
+}
+
+.key-main {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.key-sub {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.key.active .key-sub {
+    color: var(--bg-primary);
+}
+
+/* Vim Editor Preview */
+.editor-preview {
+    display: flex;
+    justify-content: center;
+}
+
+.vim-editor {
+    background: var(--term-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: var(--shadow-lg);
+}
+
+.editor-header {
+    background: #323232;
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filename {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-primary);
+}
+
+.mode-indicator {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--vim-green);
+    font-weight: 600;
+}
+
+.editor-body {
+    display: flex;
+    min-height: 200px;
+    position: relative;
+    padding: var(--space-md);
+}
+
+.line-numbers {
+    display: flex;
+    flex-direction: column;
+    padding-right: var(--space-md);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-align: right;
+    user-select: none;
+}
+
+.line-numbers span {
+    line-height: 1.8;
+}
+
+.text-content {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.line {
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.keyword {
+    color: var(--term-purple);
+}
+
+.function {
+    color: var(--term-yellow);
+}
+
+.string {
+    color: var(--term-orange);
+}
+
+.comment {
+    color: var(--text-muted);
+}
+
+.vim-cursor {
+    position: absolute;
+    width: 8px;
+    height: 1.2em;
+    background: var(--vim-green);
+    pointer-events: none;
+    transition: all 0.1s ease;
+}
+
+.editor-status {
+    background: #323232;
+    padding: var(--space-xs) var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+/* ===== Cheatsheet Section ===== */
+.cheatsheet-section {
+    padding: var(--space-3xl) 0;
+}
+
+.cheatsheet-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-bottom: var(--space-2xl);
+}
+
+.filter-btn {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+    border-color: var(--vim-green);
+    color: var(--vim-green);
+}
+
+.filter-btn.active {
+    background: var(--vim-green);
+    border-color: var(--vim-green);
+    color: var(--bg-primary);
+}
+
+.cheatsheet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-xl);
+}
+
+.cheatsheet-category {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.category-title {
+    background: var(--bg-tertiary);
+    padding: var(--space-md) var(--space-lg);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-icon {
+    font-size: 1.25rem;
+}
+
+.commands-list {
+    padding: var(--space-md);
+}
+
+.command-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 8px;
+    transition: all var(--transition-fast);
+}
+
+.command-item:hover {
+    background: var(--bg-card);
+}
+
+.command-item.highlight {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid var(--vim-green);
+}
+
+.command-keys {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-shrink: 0;
+    min-width: 120px;
+}
+
+.command-keys code {
+    background: var(--bg-primary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--term-orange);
+}
+
+.command-keys kbd {
+    background: var(--bg-primary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    border: 1px solid var(--border-color);
+    color: var(--vim-green);
+}
+
+.command-desc {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* ===== Practice Section ===== */
+.practice-section {
+    padding: var(--space-3xl) 0;
+    background: var(--bg-secondary);
+}
+
+.scenarios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-xl);
+}
+
+.scenario-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: var(--space-xl);
+    transition: all var(--transition-normal);
+}
+
+.scenario-card:hover {
+    border-color: var(--vim-green);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+}
+
+.scenario-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.scenario-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--vim-green);
+    opacity: 0.5;
+}
+
+.scenario-header h3 {
+    font-size: 1.25rem;
+}
+
+.scenario-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.step:last-child {
+    border-bottom: none;
+}
+
+.step kbd {
+    background: var(--bg-tertiary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--vim-green);
+    min-width: 80px;
+    text-align: center;
+}
+
+.step code {
+    background: var(--bg-tertiary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--term-orange);
+    min-width: 200px;
+}
+
+.step span {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* ===== Config Section ===== */
+.config-section {
+    padding: var(--space-3xl) 0;
+}
+
+.config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+}
+
+.config-block {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    position: relative;
+}
+
+.config-block:hover {
+    border-color: var(--vim-green);
+}
+
+.config-block h4 {
+    font-size: 1rem;
+    margin-bottom: var(--space-md);
+    color: var(--vim-green);
+}
+
+.config-block pre {
+    background: var(--bg-primary);
+    padding: var(--space-md);
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: var(--space-md);
+}
+
+.config-block code {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.copy-config-btn {
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    padding: var(--space-xs) var(--space-md);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.copy-config-btn:hover {
+    background: var(--vim-green);
+    border-color: var(--vim-green);
+    color: var(--bg-primary);
+}
+
+.quick-start {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(86, 211, 100, 0.1));
+    border: 1px solid var(--vim-green);
+    border-radius: 12px;
+    padding: var(--space-xl);
+    text-align: center;
+}
+
+.quick-start h3 {
+    margin-bottom: var(--space-lg);
+    color: var(--vim-green);
+}
+
+.quick-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.quick-step {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: 1rem;
+    text-align: left;
+}
+
+.step-num {
+    width: 32px;
+    height: 32px;
+    background: var(--vim-green);
+    color: var(--bg-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.quick-step code {
+    background: var(--bg-primary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+/* ===== Footer ===== */
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.footer-brand .logo-icon {
+    font-size: 1.5rem;
+}
+
+.footer-brand p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--vim-green);
+}
+
+.footer-bottom {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+/* ===== Toast ===== */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--accent-success);
+    color: var(--bg-primary);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transition: all var(--transition-normal);
+    z-index: 9999;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .features-grid,
+    .cheatsheet-grid,
+    .scenarios,
+    .config-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modes-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .demo-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .mode-flow {
+        flex-direction: column;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .keyboard-row {
+        flex-wrap: wrap;
+    }
+}
+
+/* ===== Animations ===== */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feature-card,
+.mode-card,
+.cheatsheet-category,
+.scenario-card,
+.config-block {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Selection */
+::selection {
+    background: rgba(0, 255, 0, 0.3);
+    color: var(--text-primary);
+}
