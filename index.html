@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vim マスターガイド - アニメーションで学ぶ</title>
+    <title>Vim 入門ガイド - ゼロから始めるVim</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -19,6 +19,7 @@
                 <li><a href="#concepts" class="nav-link">基本概念</a></li>
                 <li><a href="#cheatsheet" class="nav-link">チートシート</a></li>
                 <li><a href="#practice" class="nav-link">実践</a></li>
+                <li><a href="#tips" class="nav-link">Tips</a></li>
                 <li><a href="#config" class="nav-link">設定</a></li>
             </ul>
             <div class="hamburger">
@@ -33,12 +34,28 @@
     <section id="intro" class="hero">
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="highlight">Vim</span> マスターガイド
+                <span class="highlight">Vim</span> 入門ガイド
             </h1>
             <p class="hero-subtitle">
-                アニメーションとインタラクティブなチートシートで<br>
-                <strong>サクッとVimをマスター</strong>
+                モーダルエディタの概念から実践的なテクニックまで<br>
+                <strong>ゼロからVimを学ぶ</strong>
             </p>
+            
+            <!-- 最重要: 終了方法 -->
+            <div class="hero-emergency">
+                <div class="emergency-title">🚨 まずはこれだけ覚えよう</div>
+                <div class="emergency-content">
+                    <div class="emergency-item">
+                        <span class="emergency-label">保存して終了:</span>
+                        <kbd>Esc</kbd> → <kbd>:wq</kbd> → <kbd>Enter</kbd>
+                    </div>
+                    <div class="emergency-item">
+                        <span class="emergency-label">保存せずに終了:</span>
+                        <kbd>Esc</kbd> → <kbd>:q!</kbd> → <kbd>Enter</kbd>
+                    </div>
+                </div>
+            </div>
+            
             <div class="hero-buttons">
                 <a href="#concepts" class="btn-primary">
                     <span>基本概念を学ぶ</span>
@@ -57,23 +74,62 @@
             <div class="section-header">
                 <span class="badge">Introduction</span>
                 <h2>Vim とは？</h2>
-                <p>キーボードだけで高速編集 - 生産性を劇的に向上させるエディタ</p>
+                <p>キーボードだけで高速編集 - 生産性を向上させるモーダルエディタ</p>
             </div>
+            
+            <div class="vim-concept-box">
+                <h3>🤔 なぜキーボードだけ？なぜモードがある？</h3>
+                <div class="concept-content">
+                    <p>Vimは「<strong>モーダルエディタ</strong>」と呼ばれ、普通のエディタと違い、<strong>モードを切り替えて使います</strong>。これには重要な理由があります：</p>
+                    
+                    <div class="reason-list">
+                        <div class="reason-item">
+                            <span class="reason-icon">📊</span>
+                            <div class="reason-text">
+                                <strong>コードは書くより読む時間が長い</strong>
+                                <span>プログラミングで実際にキーを打っている時間は、読んだり考えたり移動したりする時間に比べて<strong>圧倒的に短い</strong>です。</span>
+                            </div>
+                        </div>
+                        <div class="reason-item">
+                            <span class="reason-icon">🎯</span>
+                            <div class="reason-text">
+                                <strong>移動専用モードをデフォルトに</strong>
+                                <span>だからVimは「移動専用モード（ノーマルモード）」をデフォルトにしました。手をキーボードから離さずに高速で移動できます。</span>
+                            </div>
+                        </div>
+                        <div class="reason-item">
+                            <span class="reason-icon">⌨️</span>
+                            <div class="reason-text">
+                                <strong>キーを使い回す</strong>
+                                <span>同じキー（例：w）を「移動コマンド」としても「削除対象指定」としても使えます。覚えるキーが減ります。</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-warning">
+                        <strong>⚠️ VSCodeユーザーへ:</strong> VSCodeでVimを使うには「Vim拡張機能」のインストールが必要です。標準では入っていません。
+                    </div>
+                </div>
+            </div>
+            
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">⌨️</div>
-                    <h3>キーボード操作</h3>
-                    <p>マウスに手を伸ばす必要なし。全てをキーボードで完結。</p>
+                    <div class="feature-icon">🎮</div>
+                    <h3>モーダル操作</h3>
+                    <p>移動・入力・選択をモードで切り替え。hjklのようなキーを複数の目的で使い回し、ショートカットを減らします。</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>高速編集</h3>
-                    <p>モーションとオペレータの組み合わせで驚異的な速度。</p>
+                    <div class="feature-icon">🧩</div>
+                    <h3>オペレータ + モーション</h3>
+                    <p>「何をするか（オペレータ）」と「どこまで（モーション）」を組み合わせることで、無限の編集パターンを作れます。</p>
+                    <div class="feature-example">
+                        <code>d</code>（削除）+ <code>w</code>（単語）= <code>dw</code>（単語を削除）
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
+                    <div class="feature-icon">🌐</div>
                     <h3>どこでも使える</h3>
-                    <p>サーバーでもVSCodeでも。vimの知識はどこでも活きる。</p>
+                    <p>SSH接続先のサーバー、Dockerコンテナ、ターミナルなど、GUIが使えない環境でも必ず利用できます。</p>
                 </div>
             </div>
         </div>
@@ -84,8 +140,8 @@
         <div class="container">
             <div class="section-header">
                 <span class="badge">Core Concepts</span>
-                <h2>3つの基本モード</h2>
-                <p>Vimを理解する上で欠かせない3つのモード</p>
+                <h2>4つのモード</h2>
+                <p>Vimを理解する上で欠かせない4つのモード</p>
             </div>
 
             <div class="modes-visualization">
@@ -100,7 +156,7 @@
                         <div class="mode-content">
                             <div class="mode-desc">
                                 <p><strong>最も重要なモード</strong></p>
-                                <p>移動、編集、検索などの<strong>大部分の作業</strong>をここで行います。</p>
+                                <p>コードを書くより<strong>読んだり移動したりする時間の方が長い</strong>ため、このモードがデフォルトです。</p>
                             </div>
                             <div class="mode-example">
                                 <div class="example-title">主な操作</div>
@@ -110,9 +166,19 @@
                                     <div class="example-item"><kbd>u</kbd> - 取り消し</div>
                                 </div>
                             </div>
-                            <div class="mode-key">
-                                <span class="key-label">挿入モードへ</span>
-                                <div class="keys"><kbd>i</kbd> <kbd>a</kbd> <kbd>o</kbd></div>
+                            <div class="mode-key-multi">
+                                <div class="key-group">
+                                    <span class="key-label">カーソルの前に挿入</span>
+                                    <kbd>i</kbd>
+                                </div>
+                                <div class="key-group">
+                                    <span class="key-label">カーソルの後に挿入</span>
+                                    <kbd>a</kbd>
+                                </div>
+                                <div class="key-group">
+                                    <span class="key-label">下に新しい行を作って挿入</span>
+                                    <kbd>o</kbd>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -126,8 +192,8 @@
                         </div>
                         <div class="mode-content">
                             <div class="mode-desc">
-                                <p><strong>テキスト入力専用</strong></p>
-                                <p>通常のテキストエディタのように文字を入力できます。</p>
+                                <p><strong>文字入力モード</strong></p>
+                                <p>通常のテキストエディタのように文字を入力できます。<kbd>Ctrl</kbd>+<kbd>n</kbd>で補完も使えます。</p>
                             </div>
                             <div class="mode-example">
                                 <div class="example-title">入力例</div>
@@ -166,35 +232,153 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Command Mode -->
+                    <div class="mode-card command-mode" data-mode="command">
+                        <div class="mode-header">
+                            <span class="mode-badge">:</span>
+                            <h3>コマンドラインモード</h3>
+                            <span class="mode-status">-- COMMAND --</span>
+                        </div>
+                        <div class="mode-content">
+                            <div class="mode-desc">
+                                <p><strong>特殊操作</strong></p>
+                                <p>保存・終了・検索・置換などの特殊なコマンドを実行します。</p>
+                            </div>
+                            <div class="mode-example">
+                                <div class="example-title">よく使うコマンド</div>
+                                <div class="example-list">
+                                    <div class="example-item"><code>:w</code> - 保存</div>
+                                    <div class="example-item"><code>:q</code> - 終了</div>
+                                    <div class="example-item"><code>:wq</code> - 保存して終了</div>
+                                </div>
+                            </div>
+                            <div class="mode-key">
+                                <span class="key-label">コマンドモードへ</span>
+                                <div class="keys"><kbd>:</kbd></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- モード切り替えフロー -->
             <div class="mode-flow-section">
                 <h3 class="flow-title">モード切り替えの流れ</h3>
-                <div class="mode-flow">
-                    <div class="flow-item">
-                        <div class="flow-icon normal">N</div>
-                        <div class="flow-text">ノーマル</div>
+                <div class="mode-flow-diagram">
+                    <div class="flow-center">
+                        <div class="flow-box normal">ノーマルモード<br><small>（デフォルト）</small></div>
                     </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-item">
-                        <div class="flow-icon insert">I</div>
-                        <div class="flow-text">i,a,oで<br>挿入へ</div>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-item">
-                        <div class="flow-icon normal">N</div>
-                        <div class="flow-text">Escで<br>戻る</div>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-item">
-                        <div class="flow-icon visual">V</div>
-                        <div class="flow-text">vで<br>選択へ</div>
+                    <div class="flow-branches">
+                        <div class="flow-branch">
+                            <div class="flow-arrow-up">↑</div>
+                            <div class="flow-label">
+                                <kbd>i</kbd> <kbd>a</kbd> <kbd>o</kbd>
+                            </div>
+                            <div class="flow-box insert">挿入モード</div>
+                            <div class="flow-label">
+                                <kbd>Esc</kbd>
+                            </div>
+                            <div class="flow-arrow-down">↓</div>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="flow-arrow-up">↑</div>
+                            <div class="flow-label">
+                                <kbd>v</kbd> <kbd>V</kbd> <kbd>Ctrl+v</kbd>
+                            </div>
+                            <div class="flow-box visual">ビジュアルモード</div>
+                            <div class="flow-label">
+                                <kbd>Esc</kbd>
+                            </div>
+                            <div class="flow-arrow-down">↓</div>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="flow-arrow-up">↑</div>
+                            <div class="flow-label">
+                                <kbd>:</kbd>
+                            </div>
+                            <div class="flow-box command">コマンドモード</div>
+                            <div class="flow-label">
+                                <kbd>Enter</kbd> / <kbd>Esc</kbd>
+                            </div>
+                            <div class="flow-arrow-down">↓</div>
+                        </div>
                     </div>
                 </div>
                 <div class="flow-tip">
-                    💡 <strong>重要:</strong> 編集後は必ず<kbd>Esc</kbd>でノーマルモードに戻りましょう
+                    💡 <strong>重要:</strong> 編集後は必ず<kbd>Esc</kbd>でノーマルモードに戻りましょう。コマンド実行後は自動で戻ります。
+                </div>
+            </div>
+
+            <!-- モーション×オペレータ -->
+            <div class="operator-motion-section">
+                <h3 class="section-subtitle">🧩 Vimの核心: オペレータ + モーション</h3>
+                <p class="section-desc">Vimの強力さは「<strong>何をするか（オペレータ）</strong>」と「<strong>どこまで（モーション）</strong>」を組み合わせることにあります。</p>
+                
+                <div class="operator-motion-grid">
+                    <div class="om-card operators">
+                        <h4>オペレータ（操作）</h4>
+                        <div class="om-list">
+                            <div class="om-item"><code>d</code> <span>削除（delete）</span></div>
+                            <div class="om-item"><code>c</code> <span>変更（change）</span></div>
+                            <div class="om-item"><code>y</code> <span>コピー（yank）</span></div>
+                            <div class="om-item"><code>v</code> <span>選択（visual）</span></div>
+                            <div class="om-item"><code>></code> <span>インデント</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="om-plus">+</div>
+                    
+                    <div class="om-card motions">
+                        <h4>モーション（移動/範囲）</h4>
+                        <div class="om-list">
+                            <div class="om-item"><code>w</code> <span>次の単語</span></div>
+                            <div class="om-item"><code>e</code> <span>単語の末尾</span></div>
+                            <div class="om-item"><code>b</code> <span>前の単語</span></div>
+                            <div class="om-item"><code>$</code> <span>行末まで</span></div>
+                            <div class="om-item"><code>iw</code> <span>単語全体（inner word）</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="om-arrow">=</div>
+                    
+                    <div class="om-card result">
+                        <h4>組み合わせ例</h4>
+                        <div class="om-examples">
+                            <div class="om-example">
+                                <code>dw</code>
+                                <span class="arrow">→</span>
+                                <span>カーソルから次の単語まで削除</span>
+                            </div>
+                            <div class="om-example">
+                                <code>diw</code>
+                                <span class="arrow">→</span>
+                                <span>カーソル下の単語を丸ごと削除</span>
+                            </div>
+                            <div class="om-example">
+                                <code>y$</code>
+                                <span class="arrow">→</span>
+                                <span>カーソルから行末までコピー</span>
+                            </div>
+                            <div class="om-example">
+                                <code>ci"</code>
+                                <span class="arrow">→</span>
+                                <span>""内を削除して挿入モード</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-object-note">
+                    <h4>📌 テキストオブジェクト（i / a）</h4>
+                    <p><code>i</code> = inner（内側）/ <code>a</code> = around（周り含む）</p>
+                    <div class="text-object-examples">
+                        <div class="to-item"><code>iw</code> = 単語</div>
+                        <div class="to-item"><code>i"</code> = ""内</div>
+                        <div class="to-item"><code>i(</code> = ()内</div>
+                        <div class="to-item"><code>i{</code> = {}内</div>
+                        <div class="to-item"><code>it</code> = HTMLタグ内</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -206,13 +390,14 @@
             <div class="section-header">
                 <span class="badge">Interactive Demo</span>
                 <h2>カーソル移動を体験</h2>
-                <p>hjklと効率的な移動方法を実際に試してみよう</p>
+                <p>基本のhjklから効率的な移動まで実際に試そう</p>
             </div>
 
             <div class="demo-container">
                 <div class="keyboard-section">
                     <div class="instruction">
                         <p>キーボードのキーを押して、テキストエリア内のカーソルを動かしてみてください</p>
+                        <p class="instruction-note">💡 <kbd>gg</kbd>で文書先頭、<kbd>G</kbd>で文書末尾にジャンプできます</p>
                     </div>
                     <div class="vim-keyboard">
                         <div class="keyboard-row">
@@ -235,7 +420,7 @@
                 <div class="editor-preview">
                     <div class="vim-editor">
                         <div class="editor-header">
-                            <span class="filename">demo.js</span>
+                            <span class="filename">sample.js</span>
                             <span class="mode-indicator">NORMAL</span>
                         </div>
                         <div class="editor-body" id="vim-text-area">
@@ -246,19 +431,37 @@
                                 <span>4</span>
                                 <span>5</span>
                                 <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+                                <span>9</span>
+                                <span>10</span>
+                                <span>11</span>
+                                <span>12</span>
+                                <span>13</span>
+                                <span>14</span>
+                                <span>15</span>
                             </div>
                             <div class="text-content">
-                                <div class="line"><span class="keyword">function</span> <span class="function">greet</span>() {</div>
-                                <div class="line">  <span class="keyword">const</span> message = <span class="string">"Hello Vim"</span>;</div>
-                                <div class="line">  console.<span class="function">log</span>(message);</div>
-                                <div class="line">  <span class="keyword">return</span> message;</div>
+                                <div class="line"><span class="comment">// ====================================</span></div>
+                                <div class="line"><span class="comment">// Vim Demo File - Move cursor with hjkl</span></div>
+                                <div class="line"><span class="comment">// Try: gg (top), G (bottom), /function (search)</span></div>
+                                <div class="line"><span class="comment">// ====================================</span></div>
+                                <div class="line"></div>
+                                <div class="line"><span class="keyword">function</span> <span class="function">calculateSum</span>(a, b) {</div>
+                                <div class="line">  <span class="keyword">const</span> result = a + b;</div>
+                                <div class="line">  <span class="keyword">return</span> result;</div>
                                 <div class="line">}</div>
-                                <div class="line"><span class="comment">// カーソルを動かしてみよう</span></div>
+                                <div class="line"></div>
+                                <div class="line"><span class="keyword">function</span> <span class="function">greetUser</span>(name) {</div>
+                                <div class="line">  console.<span class="function">log</span>(<span class="string">"Hello, "</span> + name);</div>
+                                <div class="line">  <span class="keyword">return</span> <span class="string">"Welcome to Vim!"</span>;</div>
+                                <div class="line">}</div>
+                                <div class="line"><span class="comment">// End of demo file</span></div>
                             </div>
                             <div class="cursor vim-cursor" id="vim-cursor"></div>
                         </div>
                         <div class="editor-status">
-                            <span>"demo.js" 6L, 124B</span>
+                            <span>"sample.js" 15L, 380B</span>
                             <span id="cursor-pos">1,1</span>
                             <span>All</span>
                         </div>
@@ -275,6 +478,26 @@
                 <span class="badge">Cheat Sheet</span>
                 <h2>インタラクティブ チートシート</h2>
                 <p>よく使うコマンドをカテゴリ別に表示。コピーしてすぐ使えます。</p>
+            </div>
+
+            <!-- 繰り返し回数の説明 -->
+            <div class="count-explanation">
+                <h4>🎯 繰り返し回数を指定する</h4>
+                <p>Vimではコマンドの前に<strong>数字</strong>を付けると、その回数分繰り返します。</p>
+                <div class="count-examples">
+                    <div class="count-item">
+                        <code>5j</code>
+                        <span>→ 5行下へ</span>
+                    </div>
+                    <div class="count-item">
+                        <code>3dd</code>
+                        <span>→ 3行削除</span>
+                    </div>
+                    <div class="count-item">
+                        <code>10G</code>
+                        <span>→ 10行目へ</span>
+                    </div>
+                </div>
             </div>
 
             <!-- フィルター -->
@@ -330,7 +553,7 @@
                         </div>
                         <div class="command-item">
                             <div class="command-keys"><kbd>5</kbd><kbd>G</kbd></div>
-                            <div class="command-desc">5行目へ移動</div>
+                            <div class="command-desc">5行目へ移動（数字+G）</div>
                         </div>
                         <div class="command-item">
                             <div class="command-keys"><kbd>%</kbd></div>
@@ -338,7 +561,11 @@
                         </div>
                         <div class="command-item">
                             <div class="command-keys"><kbd>*</kbd></div>
-                            <div class="command-desc">カーソル下の単語を検索</div>
+                            <div class="command-desc">カーソル下の単語を検索（次へ: <kbd>n</kbd>）</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-keys"><kbd>f</kbd><kbd>x</kbd></div>
+                            <div class="command-desc">行内で文字xを検索（次: <kbd>;</kbd> 前: <kbd>,</kbd>）</div>
                         </div>
                     </div>
                 </div>
@@ -398,7 +625,12 @@
                         </div>
                         <div class="command-item">
                             <div class="command-keys"><kbd>dw</kbd></div>
-                            <div class="command-desc">単語を削除</div>
+                            <div class="command-desc">カーソルから次の単語まで削除</div>
+                            <div class="command-note">※単語の途中ではその部分だけ</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-keys"><kbd>diw</kbd></div>
+                            <div class="command-desc">カーソル下の単語を丸ごと削除</div>
                         </div>
                         <div class="command-item">
                             <div class="command-keys"><kbd>d$</kbd></div>
@@ -423,6 +655,7 @@
                         <div class="command-item">
                             <div class="command-keys"><kbd>Ctrl+r</kbd></div>
                             <div class="command-desc">やり直し（Redo）</div>
+                            <div class="command-warning">⚠️ ブラウザと競合する場合あり</div>
                         </div>
                         <div class="command-item">
                             <div class="command-keys"><kbd>r</kbd></div>
@@ -482,11 +715,11 @@
                     <div class="commands-list">
                         <div class="command-item highlight">
                             <div class="command-keys"><code>:w</code></div>
-                            <div class="command-desc">保存</div>
+                            <div class="command-desc">保存（write）</div>
                         </div>
                         <div class="command-item highlight">
                             <div class="command-keys"><code>:q</code></div>
-                            <div class="command-desc">終了</div>
+                            <div class="command-desc">終了（quit）</div>
                         </div>
                         <div class="command-item highlight">
                             <div class="command-keys"><code>:wq</code></div>
@@ -498,11 +731,11 @@
                         </div>
                         <div class="command-item">
                             <div class="command-keys"><code>:e filename</code></div>
-                            <div class="command-desc">ファイルを開く</div>
+                            <div class="command-desc">ファイルを開く（edit）</div>
                         </div>
                         <div class="command-item">
                             <div class="command-keys"><code>:sav filename</code></div>
-                            <div class="command-desc">名前を付けて保存</div>
+                            <div class="command-desc">名前を付けて保存（saveas）</div>
                         </div>
                     </div>
                 </div>
@@ -516,35 +749,60 @@
             <div class="section-header">
                 <span class="badge">Practice</span>
                 <h2>実践的な使い方</h2>
-                <p>よくある作業シナリオとVimでの実現方法</p>
+                <p>実際のコードを例に、Vimでの操作を紹介</p>
             </div>
 
             <div class="scenarios">
                 <div class="scenario-card">
                     <div class="scenario-header">
                         <span class="scenario-number">01</span>
-                        <h3>関数の削除と移動</h3>
+                        <h3>関数を移動する</h3>
                     </div>
-                    <div class="scenario-steps">
-                        <div class="step">
-                            <kbd>gd</kbd>
-                            <span>関数定義へジャンプ</span>
+                    <div class="scenario-content">
+                        <div class="code-comparison">
+                            <div class="code-before">
+                                <div class="code-label">Before</div>
+                                <pre><code>// ファイルの上部
+function helper() {
+  return "help";
+}
+
+function main() {
+  console.log("start");
+}
+
+// この下に移動したい</code></pre>
+                            </div>
+                            <div class="code-after">
+                                <div class="code-label">After</div>
+                                <pre><code>// ファイルの上部
+function main() {
+  console.log("start");
+}
+
+// この下に移動したい
+function helper() {
+  return "help";
+}</code></pre>
+                            </div>
                         </div>
-                        <div class="step">
-                            <kbd>da{</kbd>
-                            <span>{}内を全て削除</span>
-                        </div>
-                        <div class="step">
-                            <kbd>4dd</kbd>
-                            <span>4行削除</span>
-                        </div>
-                        <div class="step">
-                            <kbd>15G</kbd>
-                            <span>15行目へ移動</span>
-                        </div>
-                        <div class="step">
-                            <kbd>p</kbd>
-                            <span>ペースト</span>
+                        <div class="scenario-steps">
+                            <div class="step">
+                                <kbd>}</kbd>
+                                <span>関数定義の先頭へ移動</span>
+                            </div>
+                            <div class="step">
+                                <kbd>da{</kbd>
+                                <span>{}内を含めて削除（around {）</span>
+                            </div>
+                            <div class="step">
+                                <kbd>3j</kbd>
+                                <span>3行下へ移動</span>
+                            </div>
+                            <div class="step">
+                                <kbd>p</kbd>
+                                <span>ペースト</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -554,22 +812,39 @@
                         <span class="scenario-number">02</span>
                         <h3>一括置換</h3>
                     </div>
-                    <div class="scenario-steps">
-                        <div class="step">
-                            <code>:%s/old/new/g</code>
-                            <span>全置換</span>
+                    <div class="scenario-content">
+                        <div class="code-comparison">
+                            <div class="code-before">
+                                <div class="code-label">Before</div>
+                                <pre><code>let userName = "John";
+let userAge = 30;
+let userEmail = "john@example.com";</code></pre>
+                            </div>
+                            <div class="code-after">
+                                <div class="code-label">After</div>
+                                <pre><code>let customerName = "John";
+let customerAge = 30;
+let customerEmail = "john@example.com";</code></pre>
+                            </div>
                         </div>
-                        <div class="step">
-                            <code>:%s/old/new/gc</code>
-                            <span>確認しながら置換</span>
+                        <div class="scenario-steps">
+                            <div class="step">
+                                <code>:%s/user/customer/g</code>
+                                <span>%=全行、s=置換、g=行内全て</span>
+                            </div>
+                            <div class="step">
+                                <code>:%s/user/customer/gc</code>
+                                <span>c=確認しながら（y/n/a/q/l）</span>
+                            </div>
                         </div>
-                        <div class="step">
-                            <kbd>*</kbd>
-                            <span>カーソル下の単語を検索</span>
-                        </div>
-                        <div class="step">
-                            <kbd>n</kbd> / <kbd>N</kbd>
-                            <span>次/前へ</span>
+                        <div class="replace-meaning">
+                            <h5>構文の意味:</h5>
+                            <ul>
+                                <li><code>%</code> = ファイル全体</li>
+                                <li><code>s</code> = substitute（置換）</li>
+                                <li><code>/old/new/</code> = 古い文字列→新しい文字列</li>
+                                <li><code>g</code> = global（行内の全て）</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -577,29 +852,119 @@
                 <div class="scenario-card">
                     <div class="scenario-header">
                         <span class="scenario-number">03</span>
-                        <h3>矩形編集</h3>
+                        <h3>矩形編集で一括コメントアウト</h3>
                     </div>
-                    <div class="scenario-steps">
-                        <div class="step">
-                            <kbd>Ctrl+v</kbd>
-                            <span>矩形選択モード</span>
+                    <div class="scenario-content">
+                        <div class="code-comparison">
+                            <div class="code-before">
+                                <div class="code-label">Before</div>
+                                <pre><code>console.log("line 1");
+console.log("line 2");
+console.log("line 3");
+console.log("line 4");</code></pre>
+                            </div>
+                            <div class="code-after">
+                                <div class="code-label">After</div>
+                                <pre><code>// console.log("line 1");
+// console.log("line 2");
+// console.log("line 3");
+// console.log("line 4");</code></pre>
+                            </div>
                         </div>
-                        <div class="step">
-                            <kbd>5j</kbd>
-                            <span>5行下まで選択</span>
+                        <div class="scenario-steps">
+                            <div class="step">
+                                <kbd>Ctrl+v</kbd>
+                                <span>矩形選択モード</span>
+                            </div>
+                            <div class="step">
+                                <kbd>3j</kbd>
+                                <span>3行下まで選択</span>
+                            </div>
+                            <div class="step">
+                                <kbd>I</kbd>
+                                <span>行頭に挿入（大文字I）</span>
+                            </div>
+                            <div class="step">
+                                <kbd>// </kbd>
+                                <span>コメント記号を入力</span>
+                            </div>
+                            <div class="step">
+                                <kbd>Esc</kbd>
+                                <span>全行に反映！（矩形編集の特徴）</span>
+                            </div>
                         </div>
-                        <div class="step">
-                            <kbd>I</kbd>
-                            <span>行頭に挿入</span>
+                        <div class="block-edit-note">
+                            💡 <strong>なぜEscで全行に反映される？</strong><br>
+                            矩形選択モードで<kbd>I</kbd>（挿入）や<kbd>A</kbd>（追加）を使うと、入力した内容が選択した全行に一度に適用されます。
                         </div>
-                        <div class="step">
-                            <kbd>// </kbd>
-                            <span>コメントアウト</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tipsセクション -->
+    <section id="tips" class="tips-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Advanced Tips</span>
+                <h2>より深く知る</h2>
+                <p>Vimをマスターするための重要な概念</p>
+            </div>
+
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3>📋 レジスタ（クリップボード）</h3>
+                    <p>Vimは削除やコピーした内容を<strong>レジスタ</strong>に保存します。</p>
+                    <div class="tip-examples">
+                        <div class="tip-item"><code>"ayy</code> → レジスタaに行をコピー</div>
+                        <div class="tip-item"><code>"ap</code> → レジスタaからペースト</div>
+                        <div class="tip-item"><code>:reg</code> → レジスタ一覧表示</div>
+                    </div>
+                    <p class="tip-note">通常の<kbd>dd</kbd>や<kbd>yy</kbd>は無名レジスタ（"）に保存されます。</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🔁 ドットコマンド（.）</h3>
+                    <p>最後に行った操作を繰り返します。これはVimの強力な機能の一つです。</p>
+                    <div class="tip-example-scenario">
+                        <div class="tip-step">
+                            <span>1.</span> <code>ciw</code> → 単語を変更
                         </div>
-                        <div class="step">
-                            <kbd>Esc</kbd>
-                            <span>全行に反映</span>
+                        <div class="tip-step">
+                            <span>2.</span> <kbd>Esc</kbd> → ノーマルモードへ
                         </div>
+                        <div class="tip-step">
+                            <span>3.</span> <kbd>w</kbd> → 次の単語へ
+                        </div>
+                        <div class="tip-step">
+                            <span>4.</span> <kbd>.</kbd> → 同じ変更を適用！
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <h3>📹 マクロ（q）</h3>
+                    <p>一連の操作を記録して再生できます。</p>
+                    <div class="tip-examples">
+                        <div class="tip-item"><code>qa</code> → マクロaの記録開始</div>
+                        <div class="tip-item">（操作を実行）</div>
+                        <div class="tip-item"><code>q</code> → 記録終了</div>
+                        <div class="tip-item"><code>@a</code> → マクロaを実行</div>
+                        <div class="tip-item"><code>@@</code> → 最後のマクロを再実行</div>
+                        <div class="tip-item"><code>5@a</code> → 5回実行</div>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <h3>❓ ヘルプの使い方</h3>
+                    <p>Vimには充実した組み込みヘルプがあります。</p>
+                    <div class="tip-examples">
+                        <div class="tip-item"><code>:help</code> → ヘルプ全体</div>
+                        <div class="tip-item"><code>:help dd</code> → ddコマンドのヘルプ</div>
+                        <div class="tip-item"><code>:help i_&lt;Esc&gt;</code> → 挿入モードでのEscのヘルプ</div>
+                        <div class="tip-item"><kbd>Ctrl</kbd>+<kbd>]</kbd> → リンクを開く</div>
+                        <div class="tip-item"><kbd>Ctrl</kbd>+<kbd>o</kbd> → 戻る</div>
                     </div>
                 </div>
             </div>
@@ -611,8 +976,12 @@
         <div class="container">
             <div class="section-header">
                 <span class="badge">Configuration</span>
-                <h2>おすすめ設定 (.vimrc)</h2>
-                <p>コピーしてすぐ使える設定例</p>
+                <h2>.vimrc 設定例</h2>
+                <p>使いやすくするための基本設定</p>
+            </div>
+
+            <div class="config-intro">
+                <p><code>~/.vimrc</code>（Linux/Mac）または <code>~/_vimrc</code>（Windows）に設定を書きます。</p>
             </div>
 
             <div class="config-grid">
@@ -621,10 +990,10 @@
                     <pre><code>" 行番号表示
 set number
 
-" シンタックスハイライト
+" シンタックスハイライト（色付け）
 syntax on
 
-" タブをスペースに
+" タブをスペースに変換
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -632,17 +1001,24 @@ set shiftwidth=2
 " 検索時にハイライト
 set hlsearch
 
-" 検索時に大文字小文字を区別しない
-set ignorecase
-set smartcase</code></pre>
+" 検索時の大文字小文字
+set ignorecase    " 小文字だけなら大文字小文字無視
+set smartcase     " 大文字を含めたら区別する</code></pre>
+                    <div class="config-explanation">
+                        <p><strong>ignorecase + smartcase:</strong> 小文字だけで検索すると「test」が「Test」「TEST」にもマッチ。大文字を含めると「Test」は「test」にマッチしません。</p>
+                    </div>
                     <button class="copy-config-btn">コピー</button>
                 </div>
 
                 <div class="config-block">
                     <h4>見た目の改善</h4>
-                    <pre><code>" カラースキーム
+                    <pre><code>" カラースキーム（環境によって異なる場合あり）
 set background=dark
-colorscheme desert
+try
+  colorscheme desert
+catch
+  " デフォルトを使用
+endtry
 
 " カーソル行をハイライト
 set cursorline
@@ -651,28 +1027,33 @@ set cursorline
 set showmatch
 
 " ステータスラインを常に表示
-set laststatus=2
-
-" コマンドラインの高さ
-set cmdheight=2</code></pre>
+set laststatus=2</code></pre>
+                    <div class="config-explanation">
+                        <p><strong>注意:</strong> Neovimや特定の環境では<code>desert</code>がない場合があります。<code>try-catch</code>で囲むと安全です。</p>
+                    </div>
                     <button class="copy-config-btn">コピー</button>
                 </div>
 
                 <div class="config-block">
                     <h4>便利な機能</h4>
-                    <pre><code>" バックスペースで削除
+                    <pre><code>" バックスペースで削除可能に
 set backspace=indent,eol,start
 
-" マウス操作有効
-set mouse=a
+" マウス操作（賛否両論あり）
+" 有効にすると端末でのコピペ方法が変わります
+" set mouse=a
 
 " 自動インデント
 set autoindent
 set smartindent
 
-" 改行時に自動でコメントアウトしない
+" 自動コメントアウトを無効化
+" 新しい行を作った時に自動でコメント記号を入れない
 autocmd FileType * setlocal formatoptions-=r
 autocmd FileType * setlocal formatoptions-=o</code></pre>
+                    <div class="config-explanation">
+                        <p><strong>マウス設定:</strong> 有効にするとVim内でマウスが使えますが、端末本来のコピペ（選択してCtrl+C）が使えなくなります。Vim方式のコピペ（yank/paste）を使う必要があります。</p>
+                    </div>
                     <button class="copy-config-btn">コピー</button>
                 </div>
             </div>
@@ -703,18 +1084,19 @@ autocmd FileType * setlocal formatoptions-=o</code></pre>
             <div class="footer-content">
                 <div class="footer-brand">
                     <span class="logo-icon">Vim</span>
-                    <p>Vi IMproved Guide</p>
+                    <p>Vim Introduction Guide</p>
                 </div>
                 <div class="footer-links">
                     <a href="#intro">はじめに</a>
                     <a href="#concepts">基本概念</a>
                     <a href="#cheatsheet">チートシート</a>
                     <a href="#practice">実践</a>
+                    <a href="#tips">Tips</a>
                     <a href="#config">設定</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Made for Vim learners</p>
+                <p>Made for Vim beginners</p>
             </div>
         </div>
     </footer>

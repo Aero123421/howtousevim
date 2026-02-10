@@ -222,6 +222,126 @@ body {
     flex-wrap: wrap;
 }
 
+/* Hero Emergency Exit */
+.hero-emergency {
+    background: linear-gradient(135deg, rgba(248, 81, 73, 0.1), rgba(248, 81, 73, 0.2));
+    border: 2px solid var(--accent-danger);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.emergency-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-danger);
+    margin-bottom: var(--space-md);
+}
+
+.emergency-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.emergency-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+}
+
+.emergency-label {
+    color: var(--text-secondary);
+    min-width: 120px;
+    text-align: right;
+}
+
+.emergency-item kbd {
+    background: var(--bg-tertiary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--vim-green);
+}
+
+/* Vim Concept Box */
+.vim-concept-box {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.vim-concept-box h3 {
+    color: var(--vim-green);
+    margin-bottom: var(--space-md);
+    font-size: 1.25rem;
+}
+
+.concept-content p {
+    margin-bottom: var(--space-md);
+    color: var(--text-secondary);
+}
+
+.reason-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.reason-item {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+}
+
+.reason-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.reason-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.reason-text strong {
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.reason-text span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.concept-warning {
+    background: rgba(210, 153, 34, 0.1);
+    border-left: 4px solid var(--accent-warning);
+    padding: var(--space-md);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Feature Example */
+.feature-example {
+    background: var(--bg-primary);
+    padding: var(--space-sm);
+    border-radius: 6px;
+    margin-top: var(--space-md);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--term-blue);
+}
+
 .btn-primary, .btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -1340,4 +1460,525 @@ body {
 ::selection {
     background: rgba(0, 255, 0, 0.3);
     color: var(--text-primary);
+}
+/* ===== Mode Key Multi ===== */
+.mode-key-multi {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+}
+
+.key-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===== Command Mode Card ===== */
+.command-mode {
+    border-color: var(--term-orange);
+}
+
+.command-mode:hover {
+    box-shadow: 0 10px 30px rgba(206, 145, 120, 0.15);
+}
+
+.command-mode .mode-badge {
+    background: var(--term-orange);
+}
+
+/* ===== Mode Flow Diagram ===== */
+.mode-flow-diagram {
+    background: var(--bg-tertiary);
+    border-radius: 16px;
+    padding: var(--space-xl);
+    margin-bottom: var(--space-lg);
+}
+
+.flow-center {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.flow-box {
+    display: inline-block;
+    padding: var(--space-md) var(--space-xl);
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.flow-box.normal {
+    background: var(--vim-green);
+    color: var(--bg-primary);
+}
+
+.flow-box.insert {
+    background: var(--accent-success);
+    color: var(--bg-primary);
+}
+
+.flow-box.visual {
+    background: var(--accent-warning);
+    color: var(--bg-primary);
+}
+
+.flow-box.command {
+    background: var(--term-orange);
+    color: var(--bg-primary);
+}
+
+.flow-branches {
+    display: flex;
+    justify-content: space-around;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.flow-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    flex: 1;
+    min-width: 200px;
+}
+
+.flow-arrow-up,
+.flow-arrow-down {
+    font-size: 1.5rem;
+    color: var(--vim-green);
+}
+
+.flow-label {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flow-label kbd {
+    background: var(--bg-primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+
+/* ===== Operator Motion Section ===== */
+.operator-motion-section {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: var(--space-xl);
+    margin-top: var(--space-3xl);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+    color: var(--vim-green);
+}
+
+.section-desc {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.operator-motion-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+    margin-bottom: var(--space-xl);
+}
+
+@media (max-width: 900px) {
+    .operator-motion-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .om-plus,
+    .om-arrow {
+        transform: rotate(90deg);
+    }
+}
+
+.om-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: var(--space-lg);
+}
+
+.om-card h4 {
+    color: var(--vim-green);
+    margin-bottom: var(--space-md);
+    font-size: 1rem;
+}
+
+.om-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.om-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.om-item code {
+    background: var(--bg-primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    color: var(--vim-green);
+    min-width: 30px;
+    text-align: center;
+}
+
+.om-item span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.om-plus,
+.om-arrow {
+    font-size: 2rem;
+    color: var(--vim-green);
+    font-weight: 700;
+}
+
+.om-examples {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.om-example {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+}
+
+.om-example code {
+    background: var(--bg-primary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    color: var(--term-orange);
+}
+
+.om-example .arrow {
+    color: var(--vim-green);
+}
+
+.om-example span {
+    color: var(--text-secondary);
+}
+
+/* Text Object Note */
+.text-object-note {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid var(--vim-green);
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.text-object-note h4 {
+    color: var(--vim-green);
+    margin-bottom: var(--space-sm);
+}
+
+.text-object-note p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.text-object-note code {
+    background: var(--bg-primary);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.text-object-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.to-item {
+    background: var(--bg-primary);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* ===== Count Explanation ===== */
+.count-explanation {
+    background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(88, 166, 255, 0.05));
+    border: 1px solid var(--accent-primary);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.count-explanation h4 {
+    color: var(--accent-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.count-explanation p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.count-examples {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.count-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.count-item code {
+    background: var(--bg-primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    color: var(--vim-green);
+}
+
+/* ===== Command Note & Warning ===== */
+.command-note,
+.command-warning {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.command-note {
+    color: var(--text-muted);
+    background: rgba(110, 118, 129, 0.2);
+}
+
+.command-warning {
+    color: var(--accent-warning);
+    background: rgba(210, 153, 34, 0.1);
+}
+
+/* ===== Scenario Content ===== */
+.scenario-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.code-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+@media (max-width: 600px) {
+    .code-comparison {
+        grid-template-columns: 1fr;
+    }
+}
+
+.code-before,
+.code-after {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.code-label {
+    background: var(--bg-tertiary);
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.code-before .code-label {
+    color: var(--accent-danger);
+}
+
+.code-after .code-label {
+    color: var(--accent-success);
+}
+
+.code-before pre,
+.code-after pre {
+    padding: var(--space-sm);
+    margin: 0;
+    overflow-x: auto;
+}
+
+.code-before code,
+.code-after code {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.replace-meaning,
+.block-edit-note {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    padding: var(--space-md);
+    font-size: 0.9rem;
+}
+
+.replace-meaning h5,
+.block-edit-note strong {
+    color: var(--vim-green);
+    margin-bottom: var(--space-sm);
+}
+
+.replace-meaning ul,
+.block-edit-note {
+    color: var(--text-secondary);
+}
+
+.replace-meaning li {
+    margin-bottom: var(--space-xs);
+}
+
+/* ===== Tips Section ===== */
+.tips-section {
+    padding: var(--space-3xl) 0;
+    background: var(--bg-secondary);
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+}
+
+.tip-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: var(--space-xl);
+    transition: all var(--transition-normal);
+}
+
+.tip-card:hover {
+    border-color: var(--vim-green);
+    transform: translateY(-4px);
+}
+
+.tip-card h3 {
+    color: var(--vim-green);
+    margin-bottom: var(--space-md);
+    font-size: 1.1rem;
+}
+
+.tip-card > p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.tip-examples {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.tip-item {
+    background: var(--bg-primary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.tip-item code {
+    color: var(--term-orange);
+}
+
+.tip-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border-color);
+}
+
+.tip-example-scenario {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    padding: var(--space-md);
+}
+
+.tip-step {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tip-step:last-child {
+    border-bottom: none;
+}
+
+.tip-step span:first-child {
+    color: var(--vim-green);
+    font-weight: 600;
+}
+
+.tip-step code {
+    color: var(--term-orange);
+    font-family: var(--font-mono);
+}
+
+/* ===== Config Section Updates ===== */
+.config-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+}
+
+.config-intro code {
+    background: var(--bg-tertiary);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.config-explanation {
+    background: var(--bg-primary);
+    border-radius: 8px;
+    padding: var(--space-md);
+    margin-top: var(--space-md);
+    font-size: 0.85rem;
+}
+
+.config-explanation p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.config-explanation strong {
+    color: var(--vim-green);
 }
